@@ -11,6 +11,92 @@
 
 <body>
 
+<script>
+
+    const lowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    const uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+    const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+    const specialChars = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_"];
+
+    var passLength = 0;
+    var hasLowercase = false;
+    var hasUppercase = false;
+    var hasNumbers = false;
+    var hasSpecialChars = false;
+    var password = "";
+    var input;
+    var inputNotValid = true;
+
+    while(inputNotValid) {
+
+        input = prompt("How many characters should your password have (8-128)?");
+        input = Number(input);
+
+        if (Number.isSafeInteger(input) === true) {
+            if (input >= 8 && input <= 128){
+                inputNotValid = false;
+            }
+            else {
+                alert("Input not valid. Please enter a number between 8 and 128.");
+            }
+        }
+        else {
+            alert("Input not valid. Please enter a number between 8 and 128.");
+        }
+
+    }
+
+    inputNotValid = true;
+
+    while(inputNotValid) {
+
+        hasLowercase = confirm("Should it have lowercase letters?");
+        hasUppercase = confirm("Should it have uppercase letters?");
+        hasNumbers = confirm("Should it have numbers?");
+        hasSpecialChars = confirm("Should it have special characters?");
+
+        if(hasLowercase || hasUppercase || hasNumbers || hasSpecialChars) {
+            inputNotValid = false;
+        }
+        else {
+            alert("Please choose at least one character set.");
+        }
+    }
+
+    console.log(input + " " + hasLowercase + " " + hasUppercase + " " + hasNumbers + " " + hasSpecialChars);
+
+    //build an array containing all characters that match user's selections
+
+    var validSet = [];
+
+    if(hasLowercase){
+        validSet = validSet.concat(lowercase);
+        console.log("Lowercase selected");
+    }
+    if(hasUppercase){
+        validSet = validSet.concat(uppercase);
+        console.log("Uppercase selected");
+    }
+    if(hasNumbers){
+        validSet = validSet.concat(numbers);
+        console.log("Numbers selected");
+    }
+    if(hasSpecialChars){
+        validSet = validSet.concat(specialChars);
+        console.log("Special characters selected");
+    }
+
+    //build password of requested length using characters in validSet array
+
+    for (var i = 0; i < input; i++) {
+        password += validSet[Math.floor(Math.random() * validSet.length)];
+    }
+
+    console.log("Password: " + password);
+    alert("Your password is: " + password);
+
+</script>
+
 </body>
 
 </html>
