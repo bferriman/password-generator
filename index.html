@@ -20,19 +20,21 @@
         var hasNumbers = formInput[3].checked;
         var hasSpecialChars = formInput[4].checked;
 
-        document.getElementById("passwordOutput").innerHTML = "";
+        document.getElementById("passHeading").innerHTML = ""; //reset password heading field
+        document.getElementById("passwordOutput").innerHTML = ""; //reset password output field
 
         var charCountNum = Number(charCountStr);
+
         if(Number.isSafeInteger(charCountNum) === false) {
             inputValid = false;
-            document.getElementById("charCountHelpBlock").innerHTML = "Please enter an integer";
+            document.getElementById("charCountHelpBlock").innerHTML = "Please enter a valid integer";
         }
         else if (charCountNum < 8 || charCountNum > 128){
             inputValid = false;
-            document.getElementById("charCountHelpBlock").innerHTML = "Please choose a number between 8 and 128";
+            document.getElementById("charCountHelpBlock").innerHTML = "Please choose a value between 8 and 128";
         }
         else {
-            document.getElementById("charCountHelpBlock").innerHTML = "Thank you!";
+            document.getElementById("charCountHelpBlock").innerHTML = "";
         }
         
         if (hasLowercase === false && hasUppercase === false && hasNumbers === false && hasSpecialChars === false){
@@ -44,6 +46,7 @@
         }
 
         if(inputValid) {
+
             generatePassword(charCountNum, hasLowercase, hasUppercase, hasNumbers, hasSpecialChars);
         }
     }
@@ -106,11 +109,9 @@
                 <form class="mb-3" id="passGenForm">
 
                     <div class="form-group">
-                        <label for="charCount">How long would you like your password to be?</label>
+                        <label for="charCount">How long would you like your password to be (8 - 128 characters)?</label>
                         <input type="text" class="form-control rounded-0" id="charCount" aria-describedby="charCountHelpBlock" required>
-                        <small id="charCountHelpBlock" class="form-text text-muted">
-                            Please choose a number of characters between 8 and 128.
-                        </small>
+                        <small id="charCountHelpBlock" class="form-text helpText"></small>
                     </div>
 
                     <div class="form-check">
@@ -133,7 +134,7 @@
                         <label class="form-check-label mr-4" for="wantSpecialChars">Special Characters</label>
                     </div>
 
-                    <p id="checkboxHelpBlock" class="form-text text-muted"></p>
+                    <small id="checkboxHelpBlock" class="form-text helpText"></small>
 
                     <button type="button" onclick="validateInput()" class="btn rounded-0 text-white bg-dusk mt-3">Submit</button>
 
@@ -146,7 +147,7 @@
         <div class="row">
 
             <div class="col">
-                <h2 id="passHeading"></h2>
+                <h2 id="passHeading" class="text-dusk"></h2>
                 <p id="passwordOutput"></p>
             </div>
 
