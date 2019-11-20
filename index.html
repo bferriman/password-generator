@@ -20,7 +20,7 @@
         var hasNumbers = formInput[3].checked;
         var hasSpecialChars = formInput[4].checked;
 
-        console.log(charCountStr + " " + hasLowercase + " " + hasUppercase + " " + hasNumbers + " " + hasSpecialChars);
+        document.getElementById("passwordOutput").innerHTML = "";
 
         var charCountNum = Number(charCountStr);
         if(Number.isSafeInteger(charCountNum) === false) {
@@ -63,19 +63,15 @@
 
         if(hasLower){
             validSet = validSet.concat(lowercase);
-            console.log("Lowercase selected");
         }
         if(hasUpper){
             validSet = validSet.concat(uppercase);
-            console.log("Uppercase selected");
         }
         if(hasNums){
             validSet = validSet.concat(numbers);
-            console.log("Numbers selected");
         }
         if(hasSpecials){
             validSet = validSet.concat(specialChars);
-            console.log("Special characters selected");
         }
 
         //build password of requested length using characters in validSet array
@@ -84,7 +80,8 @@
             password += validSet[Math.floor(Math.random() * validSet.length)];
         }
 
-        console.log("Password: " + password);
+        document.getElementById("passHeading").innerHTML = "Your password is: ";
+        document.getElementById("passwordOutput").innerHTML = password;
     }
 
     </script>
@@ -145,6 +142,16 @@
             </div>
 
         </div>
+
+        <div class="row">
+
+            <div class="col">
+                <h2 id="passHeading"></h2>
+                <p id="passwordOutput"></p>
+            </div>
+
+        </div>
+
     </section>
 
 </body>
