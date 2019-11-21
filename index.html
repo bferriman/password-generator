@@ -20,8 +20,10 @@
         var hasNumbers = formInput[3].checked;
         var hasSpecialChars = formInput[4].checked;
 
-        document.getElementById("passHeading").innerHTML = ""; //reset password heading field
+        document.getElementById("passHeading").setAttribute("class", "text-dusk no-show"); //hide password heading
+        document.getElementById("passwordOutput").setAttribute("class", "w-100 no-show"); //hide password output field
         document.getElementById("passwordOutput").innerHTML = ""; //reset password output field
+        document.getElementById("copyButton").setAttribute("class", "btn rounded-0 text-white bg-dusk my-3 no-show"); //hide copy button
 
         var charCountNum = Number(charCountStr);
 
@@ -83,8 +85,21 @@
             password += validSet[Math.floor(Math.random() * validSet.length)];
         }
 
-        document.getElementById("passHeading").innerHTML = "Your password is: ";
+        document.getElementById("passHeading").setAttribute("class", "text-dusk");  //display element
         document.getElementById("passwordOutput").innerHTML = password;
+        document.getElementById("passwordOutput").setAttribute("class", "w-100");  //display element
+        document.getElementById("copyButton").setAttribute("class", "btn rounded-0 text-white bg-dusk my-3"); //display element
+    
+    }
+
+    function copyPassword() {
+
+        var passEl = document.getElementById("passwordOutput");
+
+        passEl.select();
+        passEl.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+
     }
 
     </script>
@@ -147,8 +162,9 @@
         <div class="row">
 
             <div class="col">
-                <h2 id="passHeading" class="text-dusk"></h2>
-                <p id="passwordOutput"></p>
+                <h2 id="passHeading" class="text-dusk no-show">Your password is: </h2>
+                <textarea id="passwordOutput" class="w-100 no-show" rows="2" readonly></textarea>
+                <button id="copyButton" type="button" onclick="copyPassword()" class="btn rounded-0 text-white bg-dusk my-3 no-show">Copy to Clipboard</button>
             </div>
 
         </div>
