@@ -56,22 +56,31 @@ function generatePassword(passLength, hasLower, hasUpper, hasNums, hasSpecials) 
 
     if(hasLower){
         validSet = validSet.concat(lowercase);
+        password += lowercase[Math.floor(Math.random() * lowercase.length)];  //add a lowercase char
     }
     if(hasUpper){
         validSet = validSet.concat(uppercase);
+        password += uppercase[Math.floor(Math.random() * uppercase.length)];  //add an uppercase char
     }
     if(hasNums){
         validSet = validSet.concat(numbers);
+        password += numbers[Math.floor(Math.random() * numbers.length)];  //add a number char
     }
     if(hasSpecials){
         validSet = validSet.concat(specialChars);
+        password += specialChars[Math.floor(Math.random() * specialChars.length)];  //add a special char
     }
 
-    //build password of requested length using characters in validSet array
+    //build rest of password to requested length using characters in validSet array
 
-    for (var i = 0; i < passLength; i++) {
+    for (var i = password.length; i < passLength; i++) {
         password += validSet[Math.floor(Math.random() * validSet.length)];
     }
+
+
+    var passwordArr = password.split("");  //convert password to array
+    passwordArr.sort(function(a, b){return 0.5 - Math.random()});  //randomize char positions within password
+    password = passwordArr.join("");  //convert back to string
 
     document.getElementById("passHeading").setAttribute("class", "text-dusk");  //display element
     document.getElementById("passwordOutput").innerHTML = password;

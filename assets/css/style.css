@@ -1,3 +1,7 @@
+body {
+    background-image: url("../images/regal.png"); /* Background pattern from Toptal Subtle Patterns */
+}
+
 .main-title{
     padding: 25px 0px 25px 0px;
 }
