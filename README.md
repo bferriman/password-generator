@@ -4,6 +4,12 @@
 
 This page allows users to provide specifications and then generates a randomized password to match.
 
+Check it out [here](https://bferriman.github.io/password-generator/)!
+
+## Screenshot
+
+![Screenshot of Password Generator](https://github.com/bferriman/password-generator/blob/master/assets/images/screenshot.jpg)
+
 ## Features
 
 Allows passwords of 8-128 characters in length.
