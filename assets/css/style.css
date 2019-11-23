@@ -25,3 +25,8 @@ body {
 .no-show {
     display: none;
 }
+
+#passwordOutput {    
+    font-family: 'Biryani', sans-serif;
+    word-break: break-all;
+}

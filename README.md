@@ -25,6 +25,8 @@ Ensures at least one character is included in the generated password from each o
 
 Copy button copies the generated password to the clipboard.
 
+Uses different font to display password, chosen for distinguishing similar characters (like uppercase 'O' versus zero).
+
 ## Opportunities For Further Development
 
 Find a way to prevent password from being highlighted when Copy button is used.
@@ -38,6 +40,8 @@ This site uses [Bootstrap 4](https://getbootstrap.com/) (copyright 2019 Twitter)
 Background pattern courtesy of [Toptal Subtle Patterns](https://www.toptal.com/designers/subtlepatterns/).
 
 Icons are from [Font Awesome](https://fontawesome.com/).
+
+Uses the Biryani font from [Google Fonts](https://fonts.google.com/), by Dan Reynolds and Mathieu Réguer.
 
 ## Reference Sources Used
 
